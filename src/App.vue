@@ -5,7 +5,7 @@ import type { Model3d } from './types';
 
 // настройки 3д модели 
 const options3d = ref<Model3d>({
-  model: 'http://localhost:5173/karambit.glb', //Ссылка на модель
+  model: 'https://3d-project-waxpeer.netlify.app/karambit.glb', //Ссылка на модель
   texture: 'https://images.waxpeer.com/screenshot/texture/40863259329_texture_auto_1734857014018.png',                                   //Ссылка на текстуру
   metalic:'https://images.waxpeer.com/screenshot/metalness/40863259329_metalness_auto_1734857014018.png',                                    //Металика если есть укажем ссылку, если нет то null
   height: 500,                                              //Высота в пикселях
