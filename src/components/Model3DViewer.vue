@@ -26,32 +26,41 @@ function onModelLoad(e: any) {
 </script>
 
 <template>
-  <h1 style="color: white">{{ load }}</h1>
-  <model-viewer
-    @load="onModelLoad"
-    style="width: 100%; height: 100vh"
-    id="modelView"
-    :src="model"
-    :camera-controls="true"
-    :auto-rotate="true"
-    @error="handleError"
-    camera-orbit="70deg 75deg 105%"
-    :ar="true"
-  >
-  </model-viewer>
-  <div :class="{ 'preloader-hidden': !load === true }" class="preloader"></div>
+    <model-viewer
+      @load="onModelLoad"
+      style="width: 100%; height: 100vh"
+      id="modelView"
+      :src="model"
+      :camera-controls="true"
+      :auto-rotate="true"
+      @error="handleError"
+      camera-orbit="90deg 90deg 2m"
+      :ar="true"
+    >
+    </model-viewer>
+    <div :class="{ 'preloader-hidden': !load === true }" class="preloader">
+      loading...
+    </div>
 </template>
 
 <style>
+
 .preloader {
+  display: flex;
+  justify-content: center;
+  color: white;
+  font-size: 23px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  align-items: center;
   height: 100%;
   width: 100%;
   position: absolute;
   left: 0;
-  backdrop-filter: blur(5px);
+  backdrop-filter: blur(30px);
   top: 0;
   transition-duration: 300ms;
-  background: rgba(0, 0, 0, 0.209);
+  background: #171717bf;
 }
 .preloader-hidden {
   opacity: 0;
