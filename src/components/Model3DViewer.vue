@@ -9,7 +9,7 @@ const handleError = (e: Event) => {
 };
 const load = ref(true);
 
-function onModelLoad(e: any) {
+async function onModelLoad(e: any) {
   const modelViewerTexture = e.target;
   const material = modelViewerTexture.model.materials[0];
   const createAndApplyTextureOnline = async (channel: any, event: any) => {
@@ -18,9 +18,9 @@ function onModelLoad(e: any) {
       material?.pbrMetallicRoughness[channel].setTexture(texture);
     } else material[channel].setTexture(texture);
   };
-  createAndApplyTextureOnline("baseColorTexture", props?.texture);
+  await createAndApplyTextureOnline("baseColorTexture", props?.texture);
 
-  setTimeout(() => (load.value = false), 1000);
+  setTimeout(() => (load.value = false), 100);
 }
 </script>
 
