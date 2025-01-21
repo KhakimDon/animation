@@ -33,7 +33,6 @@ function onModelLoad(e: any) {
       :camera-controls="true"
       :auto-rotate="true"
       @error="handleError"
-      camera-orbit="90deg 90deg 2m"
       :ar="true"
     >
     </model-viewer>
