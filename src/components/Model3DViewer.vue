@@ -13,13 +13,12 @@ function onModelLoad(e: any) {
   const modelViewerTexture = e.target;
   const material = modelViewerTexture.model.materials[0];
   const createAndApplyTextureOnline = async (channel: any, event: any) => {
-    const texture = await modelViewerTexture.createTexture(event);
+    const texture = await modelViewerTexture?.createTexture(event);
     if (channel.includes("base") || channel.includes("metallic")) {
-      material.pbrMetallicRoughness[channel].setTexture(texture);
+      material?.pbrMetallicRoughness[channel].setTexture(texture);
     } else material[channel].setTexture(texture);
   };
   createAndApplyTextureOnline("baseColorTexture", props?.texture);
-  createAndApplyTextureOnline("metallicRoughnessTexture", props?.metalic);
 
   setTimeout(() => (load.value = false), 1000);
 }
@@ -34,11 +33,12 @@ function onModelLoad(e: any) {
       :camera-controls="true"
       :auto-rotate="true"
       @error="handleError"
+      camera-orbit="90deg 90deg 2m"
       :ar="true"
     >
     </model-viewer>
     <div :class="{ 'preloader-hidden': !load === true }" class="preloader">
-      loading...11
+      loading...
     </div>
 </template>
 
