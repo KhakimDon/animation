@@ -19,30 +19,37 @@ async function onModelLoad(e: any) {
     } else material[channel].setTexture(texture);
   };
   await createAndApplyTextureOnline("baseColorTexture", props?.texture);
+  await createAndApplyTextureOnline("metallicRoughnessTexture", props?.metalic);
 
   setTimeout(() => (load.value = false), 100);
+
+  const checkbox = document.querySelector('#neutral');
+  
+  checkbox.addEventListener('change',() => {
+    modelViewerTexture.environmentImage = checkbox?.checked ? '' : 'legacy';
+  });
 }
 </script>
 
 <template>
-    <model-viewer
-      @load="onModelLoad"
-      style="width: 100%; height: 100vh"
-      id="modelView"
-      :src="model"
-      :camera-controls="true"
-      :auto-rotate="true"
-      @error="handleError"
-      :ar="true"
-    >
-    </model-viewer>
-    <div :class="{ 'preloader-hidden': !load === true }" class="preloader">
-      loading...
-    </div>
+  <model-viewer
+    @load="onModelLoad"
+    style="width: 100%; height: 100vh"
+    id="modelView"
+    :src="model"
+    :camera-controls="true"
+    :auto-rotate="true"
+    @error="handleError"
+    :ar="true"
+  >
+    <input id="neutral" type="checkbox" checked="true" />
+  </model-viewer>
+  <div :class="{ 'preloader-hidden': !load === true }" class="preloader">
+    loading...
+  </div>
 </template>
 
 <style>
-
 .preloader {
   display: flex;
   justify-content: center;
