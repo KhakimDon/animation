@@ -38,7 +38,7 @@ function onModelLoad(e: any) {
     >
     </model-viewer>
     <div :class="{ 'preloader-hidden': !load === true }" class="preloader">
-      loading...
+      loading...11
     </div>
 </template>
 
