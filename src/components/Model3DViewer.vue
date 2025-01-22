@@ -23,11 +23,7 @@ async function onModelLoad(e: any) {
 
   setTimeout(() => (load.value = false), 100);
 
-  const checkbox = document.querySelector('#neutral');
-  
-  checkbox.addEventListener('change',() => {
-    modelViewerTexture.environmentImage = checkbox?.checked ? '' : 'legacy';
-  });
+  modelViewerTexture.environmentImage = "";
 }
 </script>
 
@@ -40,9 +36,10 @@ async function onModelLoad(e: any) {
     :camera-controls="true"
     :auto-rotate="true"
     @error="handleError"
+    min-camera-orbit="auto auto 3m"
+    max-camera-orbit="auto auto 16m"
     :ar="true"
   >
-    <input id="neutral" type="checkbox" checked="true" />
   </model-viewer>
   <div :class="{ 'preloader-hidden': !load === true }" class="preloader">
     loading...
