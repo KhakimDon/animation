@@ -5,10 +5,11 @@ import type { Model3d } from './types';
 
 // настройки 3д модели 
 const options3d = ref<Model3d>({
-  model: 'https://3d-project-waxpeer.netlify.app/klast.glb', //Ссылка на модельz
+  model: 'http://localhost:5173/Karambit.glb', //Ссылка на модельz
   texture: 'https://images.waxpeer.com/screenshot/texture/40863259329_texture_auto_1734857014018.png',                                   //Ссылка на текстуру
   metalic
   : 'https://images.waxpeer.com/screenshot/metalness/40863259329_metalness_auto_1734857014018.png',                                   //Ссылка на текстуру
+  sun: '/qwantani.hdr',                                   //Ссылка на текстуру
 })
 </script>
 

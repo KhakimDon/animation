@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import { onMounted, ref } from "vue";
 import type { Model3d } from "@/types";
+import { log } from "console";
 const props = defineProps<Model3d>(); //пропсы
+const sun = ref("");
 
 // обработка ошибки
 const handleError = (e: Event) => {
@@ -15,14 +17,19 @@ async function onModelLoad(e: any) {
   const createAndApplyTextureOnline = async (channel: any, event: any) => {
     const texture = await modelViewerTexture?.createTexture(event);
     if (channel.includes("base") || channel.includes("metallic")) {
-      material?.pbrMetallicRoughness[channel].setTexture(texture);
-    } else material[channel].setTexture(texture);
+      await material?.pbrMetallicRoughness[channel].setTexture(texture);
+    } else await material[channel].setTexture(texture);
   };
-  await createAndApplyTextureOnline("baseColorTexture", props?.texture);
   await createAndApplyTextureOnline("metallicRoughnessTexture", props?.metalic);
+  await createAndApplyTextureOnline("baseColorTexture", props?.texture);
+
+  
 
   setTimeout(() => (load.value = false), 100);
 
+  sun.value = props?.sun;
+  console.log(sun.value);
+  
   modelViewerTexture.environmentImage = "";
 }
 </script>
@@ -33,12 +40,18 @@ async function onModelLoad(e: any) {
     style="width: 100%; height: 100vh"
     id="modelView"
     :src="model"
-    :camera-controls="true"
-    :auto-rotate="true"
+    camera-controls
+    auto-rotate
+    occlusion="true"
+    :environment-image="sun"
     @error="handleError"
+    shadow-intensity="1"
     min-camera-orbit="auto auto 3m"
     max-camera-orbit="auto auto 16m"
-    :ar="true"
+    ar
+    ar-modes="webxr scene-viewer quick-look"
+    :exposure="1"
+    tone-mapping="neutral"
   >
   </model-viewer>
   <div :class="{ 'preloader-hidden': !load === true }" class="preloader">
