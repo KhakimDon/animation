@@ -6,7 +6,7 @@ import type { Model3d } from './types';
 
 // настройки 3д модели 
 const options3d = ref<Model3d>({
-  model: 'https://3d-project-waxpeer.netlify.app/karamanimation.glb', //Ссылка на модельz
+  model: 'http://vermillion-unicorn-ec51323232322c9.netlify.app/karamanimation.glb', //Ссылка на модельz
   texture: 'https://cdn.skinport.com/cdn-cgi/image/fit=pad,format=avif,quality=85,background=transparent/3d-viewer/textures/408598615/material0_color_weapon_knife_karambit.png',                                   //Ссылка на текстуру
   metalic: 'https://cdn.skinport.com/cdn-cgi/image/fit=pad,format=avif,quality=85,background=transparent/3d-viewer/textures/408598615/material0_metal_weapon_knife_karambit.png',                                   //Ссылка на текстуру
   sun: '/khakim11.hdr',                                   //Ссылка на текстуру
