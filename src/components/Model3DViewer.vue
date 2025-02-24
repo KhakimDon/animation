@@ -41,17 +41,17 @@ async function onModelLoad(e: any) {
     id="modelView"
     :src="model"
     camera-controls
-    auto-rotate
     occlusion="true"
     :environment-image="sun"
     @error="handleError"
+    camera-orbit="0deg 90deg 105%"
+    orbit-sensitivity="1.5"
     shadow-intensity="1"
     min-camera-orbit="auto auto 3m"
     max-camera-orbit="auto auto 16m"
     ar
     ar-modes="webxr scene-viewer quick-look"
-    :exposure="1"
-    tone-mapping="neutral"
+    :exposure="2"
   >
   </model-viewer>
   <div :class="{ 'preloader-hidden': !load === true }" class="preloader">
